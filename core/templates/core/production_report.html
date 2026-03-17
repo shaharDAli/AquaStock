@@ -1,0 +1,47 @@
+<h1>Production Report</h1>
+
+<form method="get">
+    <input type="text" name="search" placeholder="Search litre...">
+    <button type="submit">Search</button>
+</form>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Litre</th>
+            <th>Quantity</th>
+            <th>Date</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in production_list %}
+        <tr>
+            <td>{{ p.id }}</td>
+            <td>{{ p.litre.name }}</td>
+            <td>{{ p.quantity }}</td>
+            <td>{{ p.created_at|date:"Y-m-d H:i" }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="4">No production data</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'export_production_csv' %}">Export CSV</a>
+
+<div class="pagination">
+
+{% if productions.has_previous %}
+<a href="?page={{ productions.previous_page_number }}">Previous</a>
+{% endif %}
+
+<span>Page {{ productions.number }} of {{ productions.paginator.num_pages }}</span>
+
+{% if productions.has_next %}
+<a href="?page={{ productions.next_page_number }}">Next</a>
+{% endif %}
+
+</div>

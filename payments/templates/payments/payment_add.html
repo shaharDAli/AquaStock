@@ -1,0 +1,33 @@
+<h2>Add Payment</h2>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+{% csrf_token %}
+
+{% if sale %}
+
+<p>Sale ID: {{ sale.id }}</p>
+<p>Total Amount: {{ sale.total_amount }}</p>
+
+{% endif %}
+
+{% if refill %}
+
+<p>Refill ID: {{ refill.id }}</p>
+<p>Total Amount: {{ refill.total_amount }}</p>
+
+{% endif %}
+
+<label>Amount</label>
+
+<input type="number" step="0.01" name="amount">
+
+<br><br>
+
+<button type="submit">Save Payment</button>
+
+</form>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Stock Management</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 class="logo">AquaStock</h2>
+
+        <div class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="refill.html">Refill Entry</a>
+            <a href="stock.html" class="active">Stock</a>
+            <a href="providers.html">Providers</a>
+            <a href="payments.html">Payments</a>
+            <a href="reports.html">Reports</a>
+        </div>
+
+        <div class="profile">
+            <div class="profile-box">
+                <div class="avatar">R</div>
+                <div>
+                    <strong>Riyas</strong><br>
+                    <small>Admin</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Center Section -->
+    <div class="center-section">
+        <div class="card">
+            <h2>Add Stock</h2>
+
+            <form id="stockForm">
+                <label>Item Name</label>
+                <input type="text" id="itemName" required>
+
+                <label>Quantity</label>
+                <input type="number" id="quantity" required>
+
+                <button type="submit">Add Stock</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <div class="recent-card">
+            <h3>Stock List</h3>
+            <table id="stockTable">
+                <tr>
+                    <th>Item</th>
+                    <th>Qty</th>
+                    <th>Action</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+const form = document.getElementById("stockForm");
+const table = document.getElementById("stockTable");
+
+let editRow = null;
+
+form.addEventListener("submit", function(e) {
+    e.preventDefault();
+
+    const name = document.getElementById("itemName").value;
+    const qty = document.getElementById("quantity").value;
+
+    if (editRow === null) {
+        addRow(name, qty);
+    } else {
+        editRow.cells[0].innerText = name;
+        editRow.cells[1].innerText = qty;
+        editRow = null;
+    }
+
+    form.reset();
+});
+
+function addRow(name, qty) {
+    const row = table.insertRow();
+
+    row.insertCell(0).innerText = name;
+    row.insertCell(1).innerText = qty;
+
+    const actionCell = row.insertCell(2);
+
+    actionCell.innerHTML = `
+        <button onclick="editStock(this)">Edit</button>
+        <button onclick="deleteStock(this)">Delete</button>
+    `;
+}
+
+function editStock(btn) {
+    editRow = btn.parentElement.parentElement;
+
+    document.getElementById("itemName").value = editRow.cells[0].innerText;
+    document.getElementById("quantity").value = editRow.cells[1].innerText;
+}
+
+function deleteStock(btn) {
+    const row = btn.parentElement.parentElement;
+    table.deleteRow(row.rowIndex);
+}
+
+</script>
+
+</body>
+</html>

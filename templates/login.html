@@ -1,0 +1,31 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - AquaStock</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body class="login-body">
+
+    <div class="login-box">
+        <h1>AquaStock</h1>
+        <p>Smart Water Inventory Management</p>
+
+        <form method="post">
+            {% csrf_token %}
+            <input type="text" id="username" name="username" placeholder="username" required>
+            <input type="password" id="password" name="password" placeholder="password" required>
+            <button type="submit">Login</button>
+        </form>
+
+        <! --Register link-->
+        <div class="register-text">
+            <p>Don't have an account? <a href="register.html">Register</a></p>
+        </div>
+    </div>
+
+</body>
+</html>

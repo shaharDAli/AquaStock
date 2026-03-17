@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add Production</title>
+</head>
+<body>
+
+<h2>Add Production</h2>
+
+<form method="post">
+
+{% csrf_token %}
+
+<label>Litre</label>
+
+<select name="litre">
+
+{% for l in litres %}
+
+<option value="{{ l.id }}">{{ l.name }}</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Quantity</label>
+
+<input type="number" name="quantity">
+
+<br><br>
+
+<button type="submit">Save Production</button>
+
+</form>
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Edit Production</title>
+</head>
+<body>
+
+<h2>Edit Production</h2>
+
+<form method="POST">
+
+{% csrf_token %}
+
+<label>Litre</label>
+
+<select name="litre">
+
+{% for l in litres %}
+
+<option value="{{ l.id }}" 
+{% if l.id == production.litre.id %}selected{% endif %}>
+{{ l.name }}
+</option>
+
+{% endfor %}
+
+</select>
+
+<br><br>
+
+<label>Quantity</label>
+
+<input type="number" name="quantity" value="{{ production.quantity }}">
+
+<br><br>
+
+<button type="submit">Update Production</button>
+
+</form>
+
+<br>
+
+<a href="/production/">Back</a>
+
+</body>
+</html>

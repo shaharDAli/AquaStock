@@ -1,0 +1,51 @@
+<h1>Pending / Outstanding Report</h1>
+
+<form method="get">
+    <input type="text" name="search" placeholder="Search party">
+    <button type="submit">Search</button>
+</form>
+
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Party</th>
+            <th>Total Sales</th>
+            <th>Total Refill</th>
+            <th>Total Paid</th>
+            <th>Outstanding Amount</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for p in parties %}
+        <tr>
+            <td>{{ p.name }}</td>
+            <td>{{ p.total_sales_amount }}</td>
+            <td>{{ p.total_refill_amount }}</td>
+            <td>{{ p.total_paid_amount }}</td>
+            <td>{{ p.outstanding_amount }}</td>
+        </tr>
+        {% empty %}
+        <tr>
+            <td colspan="5">No parties found</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<a href="{% url 'export_pending_csv' %}">Export CSV</a>
+
+<div style="margin-top:20px;">
+
+{% if page_obj.has_previous %}
+<a href="?page=1">First</a>
+<a href="?page={{ page_obj.previous_page_number }}">Previous</a>
+{% endif %}
+
+<span>Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</span>
+
+{% if page_obj.has_next %}
+<a href="?page={{ page_obj.next_page_number }}">Next</a>
+<a href="?page={{ page_obj.paginator.num_pages }}">Last</a>
+{% endif %}
+
+</div>

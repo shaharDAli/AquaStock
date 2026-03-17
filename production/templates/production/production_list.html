@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Production List</title>
+</head>
+<body>
+
+<h2>Production Records</h2>
+
+<a href="/production/add/">Add Production</a>
+
+<form method="GET">
+
+<input type="text" name="search" placeholder="Search production">
+
+<button type="submit">Search</button>
+
+</form>
+
+<br>
+
+<table border="1" cellpadding="10">
+
+<tr>
+    <th>ID</th>
+    <th>Litre</th>
+    <th>Quantity</th>
+    <th>Created At</th>
+    <th>Actions</th>
+</tr>
+
+{% for p in productions %}
+
+<tr>
+    <td>{{ p.id }}</td>
+    <td>{{ p.litre.name }}</td>
+    <td>{{ p.quantity }}</td>
+    <td>{{ p.created_at|date:"Y-m-d H:i" }}</td>
+    <td><a href="{% url 'production_edit' p.id %}">Edit</a></td>
+
+</tr>
+
+{% endfor %}
+
+</table>
+
+<div>
+
+{% if productions.has_previous %}
+
+<a href="?page={{ productions.previous_page_number }}">Previous</a>
+
+{% endif %}
+
+<span>
+Page {{ productions.number }} of {{ productions.paginator.num_pages }}
+</span>
+
+{% if productions.has_next %}
+
+<a href="?page={{ productions.next_page_number }}">Next</a>
+
+{% endif %}
+
+</div>
+
+</body>
+</html>

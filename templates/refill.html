@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Refill Entry</title>
+    <link rel="stylesheet" href="../static/css/style.css">
+</head>
+<body>
+
+<div class="main-container">
+
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2 class="logo">AquaStock</h2>
+
+        <div class="menu">
+            <a href="dashboard.html">Dashboard</a>
+            <a href="refill.html" class="active">Refill Entry</a>
+            <a href="stock.html">Stock</a>
+            <a href="providers.html">Providers</a>
+            <a href="payments.html">Payments</a>
+            <a href="reports.html">Reports</a>
+        </div>
+
+        <div class="profile">
+            <div class="profile-box">
+                <div class="avatar">R</div>
+                <div>
+                    <strong>Riyas</strong><br>
+                    <small>Admin</small>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Center Section -->
+    <div class="center-section">
+        <div class="card">
+            <h2>Refill Entry</h2>
+
+            <form>
+                <label>Date</label>
+                <input type="date" id="date">
+
+                <label>Provider</label>
+                <input type="text" placeholder="Enter provider name">
+
+                <label>Number of Cans</label>
+                <input type="number" id="cans">
+
+                <label>Price per Can</label>
+                <input type="number" id="price">
+
+                <label>Total Amount</label>
+                <input type="number" id="total" readonly>
+
+                <button type="button">Save Entry</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Right Section -->
+    <div class="right-section">
+        <div class="recent-card">
+            <h3>Recent Entries</h3>
+            <table>
+                <tr>
+                    <th>Date</th>
+                    <th>Cans</th>
+                    <th>Total</th>
+                </tr>
+                <tr>
+                    <td>24-02-2026</td>
+                    <td>20</td>
+                    <td>₹400</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+</div>
+
+<script>
+
+/* ===== AUTO DATE ===== */
+const today = new Date().toISOString().split('T')[0];
+document.getElementById("date").value = today;
+
+/* ===== AUTO TOTAL CALCULATION ===== */
+const cansInput = document.getElementById("cans");
+const priceInput = document.getElementById("price");
+const totalInput = document.getElementById("total");
+
+function calculateTotal() {
+    const cans = cansInput.value || 0;
+    const price = priceInput.value || 0;
+    totalInput.value = cans * price;
+}
+
+cansInput.addEventListener("input", calculateTotal);
+priceInput.addEventListener("input", calculateTotal);
+
+</script>
+
+</body>
+</html>

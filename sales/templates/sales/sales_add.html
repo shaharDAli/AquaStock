@@ -1,0 +1,44 @@
+<h2>Add Sale</h2>
+
+<form method="POST" action="{% url 'sales_add' %}">
+{% csrf_token %}
+
+<label>Litre</label>
+<select name="litre">
+{% for litre in litres %}
+<option value="{{ litre.id }}">{{ litre.name }}</option>
+{% endfor %}
+</select>
+
+<br><br>
+
+<label>Customer Type</label>
+<select name="customer_type">
+<option value="WALK_IN">Walk-in</option>
+<option value="PROVIDER">Provider</option>
+</select>
+
+<br><br>
+
+<label>Party</label>
+<select name="party">
+<option value="">Select Party</option>
+{% for party in parties %}
+<option value="{{ party.id }}">{{ party.name }}</option>
+{% endfor %}
+</select>
+
+<br><br>
+
+<label>Quantity</label>
+<input type="number" name="quantity" required>
+
+<br><br>
+
+<button type="submit">Save</button>
+
+</form>
+
+{% if error %}
+<p style="color:red">{{ error }}</p>
+{% endif %}

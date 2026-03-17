@@ -1,0 +1,217 @@
+/* LOGIN PAGE */
+.login-body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: #0077b6;
+    font-family: 'Poppins', sans-serif;
+}
+
+.login-box {
+    background-color: white;
+    padding: 40px;
+    border-radius: 10px;
+    width: 320px;
+    text-align: center;
+}
+
+.login-box h1 {
+    margin-bottom: 5px;
+    color: #0077b6;
+}
+
+.login-box p {
+    font-size: 13px;
+    margin-bottom: 20px;
+    color: gray;
+}
+
+.login-box input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: px solid #ccc;
+    border-radius: 5px;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #0077b6;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+.login-box button:hover {
+    background-color: #005f86;
+}
+
+.register-text {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.register-text a {
+    color: #4e73df;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-text a:hover {
+    text-decoration: underline;
+}
+
+/* ====Refill Page==== */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    overflow: hidden;
+}
+
+.main-container {
+    display: flex;
+    height: 100vh;
+}
+
+.main-container > div {
+    margin: 0;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 230px;
+    background: #4e73df;
+    color: white;
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    margin-bottom: 40px;
+}
+
+.menu a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 18px;
+    padding: 8px;
+    border-radius: 6px;
+}
+
+.menu a:hover {
+    background: rgba(255,255,255,0.2);
+}
+
+.menu a.active {
+    background: rgba(255,255,255,0.3);
+}
+
+.profile {
+    margin-top: auto;
+}
+
+.profile-box {
+    display: flex;
+    align-items: center;
+    background: rgba(255,255,255,0.2);
+    padding: 10px;
+    border-radius: 8px;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    background: white;
+    color: #4e73df;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+/* Center */
+
+.center-section {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #f4f6f9;
+    padding: 0;
+}
+
+.card {
+    width: 350px;
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+form label {
+    display: block;
+    margin-top: 15px;
+}
+
+form input {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+form button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 10px;
+    background: #4e73df;
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+form button:hover {
+    background: #2e59d9;
+}
+
+/* Right */
+
+.right-section {
+    width: 400px;
+    background: #f4f6f9;
+    padding: 20px;
+}
+
+.recent-card {
+    background: white;
+    padding: 20px;
+    border-radius: 12px;
+    height: 100%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+table th, table td {
+    padding: 10px;
+    border-bottom: 1px solid #eee;
+}

@@ -1,0 +1,51 @@
+<h2>Sales List</h2>
+
+<a href="/sales/add/">Add Sale</a>
+
+<table border="1">
+
+<tr>
+<th>ID</th>
+<th>Litre</th>
+<th>Customer</th>
+<th>Quantity</th>
+<th>Total</th>
+<th>Status</th>
+<th>Date</th>
+<th>Payments</th>
+
+</tr>
+
+{% for s in sales %}
+
+<tr>
+
+<td>{{ s.id }}</td>
+
+<td>{{ s.litre.name }}</td>
+
+<td>
+{% if s.party %}
+{{ s.party.name }}
+{% else %}
+Walk-in
+{% endif %}
+</td>
+
+<td>{{ s.quantity }}</td>
+
+<td>{{ s.total_amount }}</td>
+
+<td>{{ s.payment_status }}</td>
+
+<td>{{ s.created_at|date:"d-m-Y H:i" }}</td>
+
+<td><a href="/payments/sale/{{ s.id }}/">Add Payment</a>
+
+<a href="/payments/history/{{ s.id }}/">View Payments</a></td>
+
+</tr>
+
+{% endfor %}
+
+</table>
